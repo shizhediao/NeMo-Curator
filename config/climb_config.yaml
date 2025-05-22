@@ -1,0 +1,28 @@
+# Configuration file for semdantic dedup
+cache_dir: "climb_cache"
+num_files: -1
+
+# Embeddings configuration
+embedding_model_name_or_path: "sentence-transformers/all-MiniLM-L6-v2" # better to use NovaSearch/stella_en_400M_v5
+embedding_batch_size: 128
+embeddings_save_loc: "embeddings"
+embedding_max_mem_gb: 70
+# Options: "mean_pooling", "last_token"
+embedding_pooling_strategy: "mean_pooling"
+embedding_column: "embeddings"
+write_embeddings_to_disk: true
+write_to_filename: false
+
+# Clustering configuration
+max_iter: 1000
+n_clusters: 10
+clustering_save_loc: "clustering_results"
+random_state: 1234
+sim_metric: "cosine"
+which_to_keep: "hard"
+batched_cosine_similarity: 1024
+clustering_input_partition_size: "2gb"
+
+# Extract dedup configuration
+# Which threshold to use for extracting deduped data
+eps_to_extract: 0.01
