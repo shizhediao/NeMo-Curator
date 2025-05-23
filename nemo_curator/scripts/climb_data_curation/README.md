@@ -1,3 +1,39 @@
+
+# Climb Data Curation
+
+## Step 1: compute_embeddings
+```bash
+cd /lustre/fsw/portfolios/llmservice/users/sdiao/NeMo-Curator/nemo_curator/scripts/climb_data_curation
+
+python compute_embeddings.py --input-data-dir /lustre/fsw/portfolios/llmservice/users/sdiao/data/cc-19+synthetic+smollm-20clusters-sampled --input-file-type "jsonl" --input-file-extension "jsonl" --input-text-field "text"  --config-file /lustre/fsw/portfolios/llmservice/users/sdiao/NeMo-Curator/config/climb_config.yaml
+```
+
+
+## Step 2:  clustering
+```bash
+python clustering.py --id-column "doc_id" --config-file /lustre/fsw/portfolios/llmservice/users/sdiao/NeMo-Curator/config/climb_config.yaml
+```
+
+## Step 3: cluster pruning
+```bash
+python cluster_pruning.py --config-file /lustre/fsw/portfolios/llmservice/users/sdiao/NeMo-Curator/config/climb_config.yaml
+```
+
+
+## Step 4: Generate training configs for different data ratio configurations
+```bash
+python synthesize_mixture.py
+```
+
+## Step 5:
+Use some training frameworks (e.g., NeMo) to train the proxy model based on the synthesized configurations.
+
+
+## Step 6: Predictor training
+```bash
+python predictor_training.py
+```
+
 # TODOs and Requirements
 
 ## TODO
