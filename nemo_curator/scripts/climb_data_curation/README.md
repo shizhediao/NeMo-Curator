@@ -44,6 +44,9 @@ python predictor_training.py
 2. **Improve compatibility between Step 4/6 and nemo-curator**  
    Steps 4 and 6 currently rely on custom code, which has poor compatibility with **nemo-curator**. This needs to be optimized.
 
+3. **Data Mixture Bootstrap**  
+   Implement the data mixture bootstrap process. It is better to implement this after completing the implementation of Step 5.
+
 ## Requirements
 
 - `seaborn`
